@@ -12,7 +12,7 @@ void propel (int cmd, int data) {
   Serial1.write (data);
 
   //check, or something
-  Serial1.write ((addr + cmd + data) & 0b01111111);
+  Serial1.write ((addr + cmd + data) & 127);
 }
 
 void forwards (float r) {
@@ -25,9 +25,22 @@ void backwards (float r) {
   propel (5, vel);
 }
 
-void turn (float L, float R) {
-  propel (0, L);
-  propel (1, R);
+void turn (float r) {
+//A value of r>0 will turn right while r<0 will turn left
+  if (r>0) {
+    propel (1, vel);
+    propel (4, vel);
+  } else {
+    propel (0, vel);
+    propel (5, vel);
+  }
+}
+
+void stopMotors() {
+
+  propel(0, 0);
+  propel(4, 0);
+  
 }
 
 void loop() {
@@ -40,9 +53,11 @@ void loop() {
     break;
     case 's': case 'S': backwards (1.0); Serial.println ("Backwards");
     break;
-    case 'a': case 'A': turn (-1.0, 1.0); Serial.println ("Left turn");
+    case 'a': case 'A': turn (-1.0); Serial.println ("Left turn");
     break;
-    case 'd': case 'D': turn (1.0, -1.0); Serial.println ("Right turn");
+    case 'd': case 'D': turn (1.0); Serial.println ("Right turn");
+    break;
+    case 'q': case 'Q': stopMotors(); Serial.println("Stopped");
     break;
     default:
     //
