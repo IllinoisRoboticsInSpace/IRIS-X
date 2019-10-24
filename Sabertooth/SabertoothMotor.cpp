@@ -101,6 +101,21 @@ void SabertoothMotor::bmt(int m1, int m2) {  //  Backward moving turn
   run (MOTOR2_BWD, m2);
 }
 
+void SabertoothMotor::miw(int m1, int m2) {  //  Move individual wheels
+  if (m1 > 0) {
+  	run (MOTOR1_FWD, m1);
+  }
+  else {
+  	run (MOTOR1_BWD, m1 * -1);
+  }
+  if (m1 > 0) {
+  	run (MOTOR2_FWD, m2);
+  }
+  else {
+  	run (MOTOR2_BWD, m2 * -1);
+  }
+}
+
 /* *************************************************************************** */
 
 /* 
