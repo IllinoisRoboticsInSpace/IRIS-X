@@ -31,7 +31,7 @@ void setup() {
   			}
 
   			#Since both should have been received, send controls to motors
-  			s.fmt(rVel, lVel);
+  			s.miw(rVel, lVel);
   		}
   	}
   }
