@@ -1,0 +1,9 @@
+var ALIASES = {};
+ALIASES["ioctl_rs"] = {};
+ALIASES["libc"] = {};
+ALIASES["robust_arduino_serial"] = {};
+ALIASES["serial"] = {};
+ALIASES["serial_core"] = {};
+ALIASES["serial_unix"] = {};
+ALIASES["std_semaphore"] = {};
+ALIASES["termios"] = {};
