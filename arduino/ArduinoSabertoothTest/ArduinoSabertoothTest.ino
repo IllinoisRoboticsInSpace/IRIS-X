@@ -2,6 +2,9 @@
  * rosserial Subscriber Example
  * Blinks an LED on callback
  */
+//To run:
+//rosrun rosserial_python serial_node.py /dev/ttyACM0
+
 
 #include <ros.h>
 #include <std_msgs/String.h>
