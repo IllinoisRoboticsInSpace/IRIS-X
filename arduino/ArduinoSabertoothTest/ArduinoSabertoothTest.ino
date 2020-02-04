@@ -13,16 +13,17 @@ Sabertooth ST(130, Serial1);
 bool motorState = false;
 
 void messageCb( const std_msgs::String& toggle_msg){
-  if (!motorState) {
+  String msg = toggle_msg.data;
+  if (msg == "Move") {
     ST.motor(1, 127);
     motorState = true;
-  } else {
+  } else if (msg == "Stop"){
     ST.motor(1, 0);
     motorState = false;
   }
 }
 
-ros::Subscriber<std_msgs::Empty> sub("toggle_led", &messageCb );
+ros::Subscriber<std_msgs::String> sub("toggle_motor", &messageCb );
 
 void setup()
 { 

@@ -5,28 +5,23 @@
 
 #include <ros.h>
 #include <std_msgs/String.h>
-#include <Sabertooth.h>
 
 ros::NodeHandle  nh;
-Sabertooth ST(130, Serial1);
-
-bool motorState = false;
 
 void messageCb( const std_msgs::String& toggle_msg){
-  if (!motorState) {
-    ST.motor(1, 127);
-    motorState = true;
-  } else {
-    ST.motor(1, 0);
-    motorState = false;
+  String msg = toggle_msg.data;
+  if(msg == "Test"){
+    digitalWrite(LED_BUILTIN, HIGH-digitalRead(LED_BUILTIN));   // blink the led
+  }
+  else{
+    digitalWrite(LED_BUILTIN, HIGH-digitalRead(LED_BUILTIN));   // don't blink the led
   }
 }
 
-ros::Subscriber<std_msgs::Empty> sub("toggle_led", &messageCb );
+ros::Subscriber<std_msgs::String> sub("toggle_led", &messageCb );
 
 void setup()
 { 
-  Serial1.begin(9600);
   pinMode(LED_BUILTIN, OUTPUT);
   nh.initNode();
   nh.subscribe(sub);
