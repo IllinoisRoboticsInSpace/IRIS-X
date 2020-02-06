@@ -4,13 +4,13 @@
  */
 
 #include <ros.h>
-#include <std_msgs/String.h>
+#include <std_msgs/Float64.h>
 
 ros::NodeHandle  nh;
 
-void messageCb( const std_msgs::String& toggle_msg){
-  String msg = toggle_msg.data;
-  if(msg == "Test"){
+void messageCb(const std_msgs::Float64& toggle_msg){
+  double msg = toggle_msg.data;
+  if(msg == 1){
     digitalWrite(LED_BUILTIN, HIGH-digitalRead(LED_BUILTIN));   // blink the led
   }
   else{
@@ -18,7 +18,7 @@ void messageCb( const std_msgs::String& toggle_msg){
   }
 }
 
-ros::Subscriber<std_msgs::String> sub("toggle_led", &messageCb );
+ros::Subscriber<std_msgs::Float64> sub("toggle_motor", &messageCb );
 
 void setup()
 { 

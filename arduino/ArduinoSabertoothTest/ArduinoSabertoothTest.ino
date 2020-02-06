@@ -7,33 +7,39 @@
 
 
 #include <ros.h>
-#include <std_msgs/String.h>
+#include <std_msgs/Float64.h>
 #include <Sabertooth.h>
 
 ros::NodeHandle  nh;
 Sabertooth ST(130, Serial1);
 
-bool motorState = false;
-
-void messageCb( const std_msgs::String& toggle_msg){
-  String msg = toggle_msg.data;
-  if (msg == "Move") {
+void leftMtrCb( const std_msgs::Float64& toggle_msg){
+  double msg = toggle_msg.data;
+  if (msg == 1) {
+    ST.motor(2, 127);
+  } else if (msg == 0){
+    ST.motor(2, 0);
+  }
+}
+void rightMtrCb( const std_msgs::Float64& toggle_msg){
+  double msg = toggle_msg.data;
+  if (msg == 1) {
     ST.motor(1, 127);
-    motorState = true;
-  } else if (msg == "Stop"){
+  } else if (msg == 0){
     ST.motor(1, 0);
-    motorState = false;
   }
 }
 
-ros::Subscriber<std_msgs::String> sub("toggle_motor", &messageCb );
+ros::Subscriber<std_msgs::Float64> leftMtrSub("leftMotor", &leftMtrCb );
+ros::Subscriber<std_msgs::Float64> rightMtrSub("rightMotor", &rightMtrCb );
 
 void setup()
 { 
   Serial1.begin(9600);
   pinMode(LED_BUILTIN, OUTPUT);
   nh.initNode();
-  nh.subscribe(sub);
+  nh.subscribe(leftMtrSub);
+  nh.subscribe(rightMtrSub);
 }
 
 void loop()
