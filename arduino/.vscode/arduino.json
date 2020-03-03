@@ -2,5 +2,5 @@
     "board": "arduino:avr:mega",
     "configuration": "cpu=atmega2560",
     "port": "/dev/ttyACM0",
-    "sketch": "ArduinoSabertoothTest/ArduinoSabertoothTest.ino"
+    "sketch": "driveMotorSub/ArduinoSabertoothTest.ino"
 }

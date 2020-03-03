@@ -4,10 +4,10 @@
 Simple demo that publishes geometry_msgs/Twist messages to the 'driveMotor' topic
 To run:
 make a ros package + make a scripts folder + put this pyfile in the catkin package scripts folder
-run catkin_make
+catkin_make
 cd catkin_ws && source ./devel/setup.bash
-run roscore
-run rosrun <Package Name> controlPub.py
+roscore
+rosrun <Package Name> controlPub.py
 """
 
 import rospy
