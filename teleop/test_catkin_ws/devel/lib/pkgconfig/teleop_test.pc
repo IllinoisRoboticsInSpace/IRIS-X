@@ -1,0 +1,8 @@
+prefix=/home/bchandaka/IRIS-X/teleop/test_catkin_ws/devel
+
+Name: teleop_test
+Description: Description of teleop_test
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/bchandaka/IRIS-X/teleop/test_catkin_ws/devel/lib 
+Requires: 

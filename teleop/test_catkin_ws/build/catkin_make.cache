@@ -1,0 +1,2 @@
+teleop_test
+-DCATKIN_DEVEL_PREFIX=/home/bchandaka/IRIS-X/teleop/test_catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/bchandaka/IRIS-X/teleop/test_catkin_ws/install -G Unix Makefiles

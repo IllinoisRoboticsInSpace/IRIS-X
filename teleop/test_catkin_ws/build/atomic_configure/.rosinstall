@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/bchandaka/IRIS-X/teleop/test_catkin_ws/devel/setup.sh
